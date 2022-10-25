@@ -1,10 +1,10 @@
 # Link in bio with 3d animation 
-this project is an insperation from Takuya Matsuyama's [video](https://www.youtube.com/watch?v=u71pHOyvBp0&t=2s)
+this project is an inspiration by Takuya Matsuyama's [video](https://www.youtube.com/watch?v=u71pHOyvBp0&t=2s)
 
 ## Features
 
 - Modern UI Design
-- 3d Animation using three.js
+- 3d animation using three.js
 - Webpack as a module bundler
 - Fully Responsive
 
