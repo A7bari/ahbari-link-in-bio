@@ -2,6 +2,12 @@ import './style.css'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
+/*
+* created by Ahbari Mohammed 
+* https://github.com/Ahbari-M
+*/
+
+
 // initialisation 
 const canvas = document.querySelector('#canvas');
 const scene = new THREE.Scene();
@@ -16,7 +22,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize( window.innerWidth, window.innerHeight*.8 );
 
 // sphere 
-const geometry = new THREE.SphereBufferGeometry( 4, 15, 8 );
+const geometry = new THREE.SphereBufferGeometry( 4, 12, 8  );
 const material = new THREE.MeshStandardMaterial( { color: 0xAAAA9B, wireframe: true } );
 const sphere = new THREE.Mesh( geometry, material );
 scene.add( sphere );
@@ -24,11 +30,13 @@ scene.add( sphere );
 
 // twitter 
 const twitter = new THREE.Group() ;
-const geometry1 = new THREE.SphereBufferGeometry( 0.1, 10, 10 );
-const material1 = new THREE.MeshStandardMaterial( { color: 0x37A9E1 } );
-const sphere1 = new THREE.Mesh( geometry1, material1 );
-
-twitter.add(sphere1, new THREE.PointLight(0x37A9E1)) ;
+twitter.add(
+  new THREE.Mesh( 
+    new THREE.SphereBufferGeometry( 0.1, 10, 10 ), 
+    new THREE.MeshStandardMaterial( { color: 0x37A9E1 } ) 
+  ),
+  new THREE.PointLight(0x37A9E1) 
+);
 
 scene.add( twitter );
 
@@ -95,17 +103,17 @@ function animate() {
   let elapsedTime = clock.getElapsedTime() ;
   let angle = elapsedTime * .3 ;
 
-  twitter.position.x = 5 * (Math.cos(angle) - Math.sin( angle)) ;
+  twitter.position.x = 4.5 * Math.cos(angle);
   twitter.position.y = 4 * Math.sin( angle);
   twitter.position.z = Math.cos(angle);
 
 
-  linkedIn.position.x = 5 * (Math.cos(angle) ) ;
-  linkedIn.position.z = 5 *( Math.sin( angle));
-  linkedIn.position.y = 2 * ( Math.sin( -0.2*angle));
+  linkedIn.position.x = 5 * Math.cos(angle) ;
+  linkedIn.position.z = 4.3 * Math.sin( angle);
+  linkedIn.position.y = 2 * Math.sin( -0.2*angle);
 
-  github.position.y = 4.8 * (Math.cos(angle) ) ;
-  github.position.z = 4.8 *( Math.sin( angle));
+  github.position.y = 4.8 * Math.cos(angle)  ;
+  github.position.z = 4.8 * Math.sin( angle);
 
   insta.position.x = - 5 * Math.cos( angle);
   insta.position.y = - 4.5 * Math.sin( angle);
@@ -113,6 +121,7 @@ function animate() {
 
   sphere.rotation.x += 0.002;
   sphere.rotation.y += 0.002;
+  
   controls.update()
   renderer.render( scene, camera );
 };
